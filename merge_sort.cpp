@@ -50,6 +50,7 @@ void merge_sort(int a[], int size)
 	merge_sort(a, aux, 0, size - 1);
 	delete[] aux;
 }
+/*
 
 // test sorting 
 int main(int argc, char* argv[])
@@ -79,3 +80,4 @@ int main(int argc, char* argv[])
 
 	return 0;
 }
+*/

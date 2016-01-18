@@ -13,7 +13,7 @@
 using namespace std;
 
 
-int main(int argc, char* argv[])
+int arrchk(int argc, char* argv[])
 {
 	int a, b, count = 0;
 	int type = 0;

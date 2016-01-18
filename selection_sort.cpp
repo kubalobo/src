@@ -36,6 +36,7 @@ void selection_sort(int a[], int size)
 		exch(a, k, i);
 	}
 }
+/*
 
 // test sorting 
 int main(int argc, char* argv[])
@@ -65,3 +66,4 @@ int main(int argc, char* argv[])
 
 	return 0;
 }
+*/

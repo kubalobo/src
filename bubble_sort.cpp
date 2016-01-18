@@ -41,6 +41,7 @@ void bubble_sort(int a[], int size)
 	}
 }
 
+/*
 // test sorting 
 int main(int argc, char* argv[])
 {
@@ -69,3 +70,4 @@ int main(int argc, char* argv[])
 
 	return 0;
 }
+*/

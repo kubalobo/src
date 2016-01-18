@@ -11,15 +11,17 @@
 
 using namespace std;
 
-
 // returns minimum of 2 values
 inline int min(int a, int b)
 {
 	return a < b ? a : b;
 }
 
+//Zdefiniowano w merge_sort.cpp
+void merge(int a[], int aux[], int lo, int mid, int hi);
+
 // merge operation
-void merge(int a[], int aux[], int lo, int mid, int hi)
+/*void merge(int a[], int aux[], int lo, int mid, int hi)
 {
 	// copy
 	for (int k = lo; k <= hi; k++)
@@ -36,7 +38,7 @@ void merge(int a[], int aux[], int lo, int mid, int hi)
 		else if (aux[j] < aux[i]) a[k] = aux[j++]; // right value lower
 		else                      a[k] = aux[i++]; // left value lower
 	}
-}
+}*/
 
 // merge sort - bottom-up version
 void merge_sort_bottom_up(int a[], int aux[], int size)
@@ -58,6 +60,7 @@ void merge_sort_bottom_up(int a[], int size)
 	merge_sort_bottom_up(a, aux, size);
 	delete[] aux;
 }
+/*
 
 // test sorting 
 int main(int argc, char* argv[])
@@ -87,3 +90,4 @@ int main(int argc, char* argv[])
 
 	return 0;
 }
+*/

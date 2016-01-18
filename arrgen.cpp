@@ -142,7 +142,7 @@ void array_descending(int size)
 // main entry to the program
 //////////////////////////////////////////////////////////////////////////
 
-int main(int argc, char* argv[])
+int arrgen(int argc, char* argv[])
 {
 	// check if there are at least 2 arguments
 	if (argc <= 2)

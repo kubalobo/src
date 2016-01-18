@@ -54,6 +54,7 @@ void quick_sort_3way(int a[], int size)
 {
 	quick_sort_3way(a, 0, size - 1);
 }
+/*
 
 // test sorting 
 int main(int argc, char* argv[])
@@ -83,3 +84,4 @@ int main(int argc, char* argv[])
 
 	return 0;
 }
+*/
