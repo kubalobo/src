@@ -1,10 +1,13 @@
 #include <iostream>
 #include <stdio.h>
+#include <Windows.h>
 
 #include "functions.h"
 #include "sort.h"
 
 using namespace std;
+
+
 
 int main()
 {
@@ -29,6 +32,17 @@ int main()
 		cout << tablica[i] << " ";
 	}
 
+
+	double start;
+	double end;
+
+	start = GetTickCount(); // odczytaj liczbê milisekund przed
+
+//	my_sorting_algorithm(a, N); // wykonaj algorytm
+
+	end = GetTickCount(); // odczytaj liczbê milisekund po
+
+	cout << "time: " << (end - start) * 0.001 << "s " << endl;
 /*
 	//bubble_sort(tablica, size);
 
