@@ -73,13 +73,15 @@ void error_message()
 
 // generate an array of specified size
 // containing random numbers in range [minv, maxv]
-void array_random(int size, int minv, int maxv)
+int* array_random(int size, int minv, int maxv, int target[])
 {
-	cout << size << endl;
+	//cout << size << endl;
 	for (int i = 0; i < size; i++)
 	{
-		cout << nextrand(minv, maxv) << " ";
+		//cout << nextrand(minv, maxv) << " ";
+		target[i] = nextrand(minv, maxv);
 	}
+	return target;
 }
 
 // generate a partially sorted array
@@ -119,13 +121,14 @@ void array_partially_sorted(int size, int inv)
 }
 
 // generate an array sorted in the ascending order
-void array_ascending(int size)
+int* array_ascending(int size, int* target)
 {
-	cout << size << endl;
+	//cout << size << endl;
 	for (int i = 0; i < size; i++)
 	{
-		cout << i << " ";
+		target[i] =i;
 	}
+	return target;
 }
 
 // generate an array sorted in the descending order
@@ -142,13 +145,13 @@ void array_descending(int size)
 // main entry to the program
 //////////////////////////////////////////////////////////////////////////
 
-int arrgen(int argc, char* argv[])
+int* arrgen(int argc, char* argv[])
 {
 	// check if there are at least 2 arguments
 	if (argc <= 2)
 	{
 		error_message();
-		return 1;
+		return 0;
 	}
 
 	// initialize the random number generator
@@ -158,6 +161,8 @@ int arrgen(int argc, char* argv[])
 	int size = atoi(argv[2]);
 	if (size <= 0) size = 1;
 
+	int target[size];
+
 	// parse options
 	if (argc > 4 && !strcmp(argv[1], "R"))
 	{
@@ -165,7 +170,7 @@ int arrgen(int argc, char* argv[])
 		int maxv = atoi(argv[4]);
 		if (maxv < minv) maxv = minv;
 
-		array_random(size, minv, maxv);
+		return array_random(size, minv, maxv, target);
 	}
 	else if (argc > 3 && !strcmp(argv[1], "P"))
 	{
@@ -176,7 +181,7 @@ int arrgen(int argc, char* argv[])
 	}
 	else if (!strcmp(argv[1], "A"))
 	{
-		array_ascending(size);
+		return array_ascending(size, target);
 	}
 	else if (!strcmp(argv[1], "D"))
 	{
