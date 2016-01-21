@@ -13,23 +13,25 @@
 using namespace std;
 
 
-int arrchk(int argc, char* argv[])
+int arrchk(int* arr, int size)
 {
-	int a, b, count = 0;
+	int a, b;
 	int type = 0;
-	while (cin >> b)
+
+	a = arr[0];
+
+	for(int i = 0; i < size; i++)
 	{
-		if (count++)
-		{
+		b = arr[i];
 			if (type == 0 && a < b) type = 1;
 			else if (type == 0 && a > b) type = 2;
 			else if (type == 1 && a > b) type = 3;
-			else if (type == 2 && a < b) type = 3;
-		}
+			else if (type == 2 && a < b) {type = 3;  break;}
+
 		a = b;
 	}
 	
 	const char* stype[] = { "equal", "ascending", "descending", "none" };
-	cout << count << "," << stype[type];
+	cout << stype[type];
 	return 0;
 }
