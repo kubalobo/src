@@ -43,7 +43,7 @@ int main()
 	end = GetTickCount(); // odczytaj liczbê milisekund po
 
 	cout << "time: " << (end - start) * 0.001 << "s " << endl;
-/*
+
 	//bubble_sort(tablica, size);
 
 	arrchk(tablica, size);
@@ -52,6 +52,6 @@ int main()
 	{
 		cout << tablica[i] << " ";
 	}
-*/
+
 
 }

@@ -74,8 +74,8 @@ void quick_sort(int a[], int size)
 {
 	quick_sort(a, 0, size -1);
 }
-/*
 
+/*
 // test sorting 
 int main(int argc, char* argv[])
 {
