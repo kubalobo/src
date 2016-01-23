@@ -12,19 +12,21 @@ using namespace std;
 int main()
 {
 	int size = 100000;
+	char* tryb = "R";
+
+	cout << "Ilosc elementow: ";
+	cin >> size;
+	cout << endl;
+
+//	cout << "Tablica poczatkowa (R P A D): ";
+//	cin >> tryb;
+//	cout << endl << endl;
 
 	char str[10];
 	sprintf(str, "%d", size);		//zamiana size na string ( 10 na "10" bo w takiej formie lyknie to arrgen )
 
-	cout << "Ilosc elementow: " << size << endl << endl;
-
 	int* zbiorTestowy = new int[size];
 	int* tablica = new int[size];
-
-
-//	tablica = arrgen(5, arg);
-//	arrchk(tablica, size);		//check czy posortowana, chyba dzialal dopoki arrgen sie nie popsul
-
 
 
 //	//testowe wypisanie
@@ -37,8 +39,8 @@ int main()
 	double end;
 
 //----------------------------------------------------
-// Test 1 - random
-	char* arg[] = 	{"", "R", str, "0", "10"}; 	//argumenty: {pusty, typ R P A D, ilosc(size), zakresMin, zakresMax}
+// Losowanie tablicy ze zbiorem testowym
+	char* arg[] = 	{"", tryb, str, "0", "10"}; 	//argumenty: {pusty, typ R P A D, ilosc(size), zakresMin, zakresMax}
 
 	cout << "Losowanie tablicy - ";
 	zbiorTestowy = arrgen(5, arg);
