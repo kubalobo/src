@@ -11,47 +11,53 @@ using namespace std;
 
 int main()
 {
-	int size = 10;
+	int size = 100000;
 
 	char str[10];
 	sprintf(str, "%d", size);		//zamiana size na string ( 10 na "10" bo w takiej formie lyknie to arrgen )
 
-	int* tablica = new int[size];	// tutaj moze byc problem ???
-
-					//argumenty: {pusty, typ R P A D, ilosc(size), zakresMin, zakresMax}
-	char* arg[] = 	{"", "A", str, "0", "10"};
-
-	tablica = arrgen(5, arg);
-
-	//arrchk(tablica, size);		//check czy posortowana, chyba dzialal dopoki arrgen sie nie popsul
+	int* zbiorTestowy = new int[size];
+	int* tablica = new int[size];
 
 
-	//testowe wypisanie
-	for (int i = 0; i < size; i++)
-	{
-		cout << tablica[i] << " ";
-	}
+//	tablica = arrgen(5, arg);
+//	arrchk(tablica, size);		//check czy posortowana, chyba dzialal dopoki arrgen sie nie popsul
 
+
+
+//	//testowe wypisanie
+//		for (int i = 0; i < size; i++)
+//		{
+//			cout << tablica[i] << " ";
+//		}
 
 	double start;
 	double end;
 
-	start = GetTickCount(); // odczytaj liczbê milisekund przed
+//----------------------------------------------------
+// Test 1 - random
+	char* arg[] = 	{"", "R", str, "0", "10"}; 	//argumenty: {pusty, typ R P A D, ilosc(size), zakresMin, zakresMax}
 
-//	my_sorting_algorithm(a, N); // wykonaj algorytm
+	cout << "Losowanie tablicy - ";
+	zbiorTestowy = arrgen(5, arg);
+	arrchk(zbiorTestowy, size);					//jaka jest tablica
+	cout << endl << endl;
 
-	end = GetTickCount(); // odczytaj liczbê milisekund po
 
-	cout << "time: " << (end - start) * 0.001 << "s " << endl;
-/*
-	//bubble_sort(tablica, size);
+// Sort 1 - bubble_sort
+	copy(zbiorTestowy, zbiorTestowy + size, tablica);//zaladowanie zbioru testowego do tablicy roboczej
+	cout << "bubble_sort" << endl;
+	cout << "Sortuje... " << endl;
+	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
+		bubble_sort(tablica, size);
+	end = GetTickCount(); 						// odczytaj liczbê milisekund po
+	cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
+	cout << "Otrzymano tablice - ";
+		arrchk(tablica, size);
+	cout << endl << endl;
 
-	arrchk(tablica, size);
 
-	for (int i = 0; i < size; i++)
-	{
-		cout << tablica[i] << " ";
-	}
-*/
+
+
 
 }
