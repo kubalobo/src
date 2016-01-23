@@ -126,7 +126,7 @@ int* array_ascending(int size, int* target)
 	//cout << size << endl;
 	for (int i = 0; i < size; i++)
 	{
-		target[i] =i;
+		target[i] = i;
 	}
 	return target;
 }
@@ -161,7 +161,7 @@ int* arrgen(int argc, char* argv[])
 	int size = atoi(argv[2]);
 	if (size <= 0) size = 1;
 
-	int target[size];
+	int* target = new int[size];
 
 	// parse options
 	if (argc > 4 && !strcmp(argv[1], "R"))
