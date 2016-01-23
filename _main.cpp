@@ -11,7 +11,7 @@ using namespace std;
 
 int main()
 {
-	int size = 100000;
+	int size = 10000;
 
 	char str[10];
 	sprintf(str, "%d", size);		//zamiana size na string ( 10 na "10" bo w takiej formie lyknie to arrgen )
@@ -46,7 +46,7 @@ int main()
 
 // Sort 1 - bubble_sort
 	copy(zbiorTestowy, zbiorTestowy + size, tablica);//zaladowanie zbioru testowego do tablicy roboczej
-	cout << "bubble_sort" << endl;
+	cout << "	bubble_sort" << endl;
 	cout << "Sortuje... " << endl;
 	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
 		bubble_sort(tablica, size);
