@@ -14,9 +14,9 @@ int main()
 	int size = 100000;
 	char* tryb = "R";
 
-	cout << "Ilosc elementow: ";
-	cin >> size;
-	cout << endl;
+//	cout << "Ilosc elementow: ";
+//	cin >> size;
+//	cout << endl;
 
 //	cout << "Tablica poczatkowa (R P A D): ";
 //	cin >> tryb;
@@ -53,7 +53,7 @@ int main()
 	cout << "	bubble_sort" << endl;
 	cout << "Sortuje... " << endl;
 	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-//		bubble_sort(tablica, size);
+		bubble_sort(tablica, size);
 	end = GetTickCount(); 						// odczytaj liczbê milisekund po
 	cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
 	cout << "Otrzymano tablice - ";
@@ -66,7 +66,7 @@ int main()
 	cout << "	insertion_sort" << endl;
 	cout << "Sortuje... " << endl;
 	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-//		insertion_sort(tablica, size);
+		insertion_sort(tablica, size);
 	end = GetTickCount(); 						// odczytaj liczbê milisekund po
 	cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
 	cout << "Otrzymano tablice - ";
@@ -131,7 +131,7 @@ int main()
 	cout << "	selection_sort" << endl;
 	cout << "Sortuje... " << endl;
 	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-//		selection_sort(tablica, size);
+		selection_sort(tablica, size);
 	end = GetTickCount(); 						// odczytaj liczbê milisekund po
 	cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
 	cout << "Otrzymano tablice - ";
