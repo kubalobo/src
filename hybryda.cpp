@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include "sort.h"
+#include <cstdlib>
 
 using namespace std;
 
@@ -19,6 +20,29 @@ inline void exch(int a[], int i, int j)
 	a[j] = t;
 }
 
+void mix(int a[], int size)  // mieszanie tablicy
+{
+	for (int i = 0; i < a; i++) {
+		int j = int(rand() * size / RAND_MAX);
+		if (j == size)
+			j -= 1;
+		int t = a[i];
+		a[i] = a[j];
+		a[j] = t;
+	}
+}
+
+int mediana(int a[], int size)
+{
+	int middle;
+	if (size % 2 == 0)
+		middle = a[size / 2];
+	else
+		middle = a[(size - 1) / 2];
+	int b[3] = {a[0], middle, a[size - 1]};
+	insertion_sort(b, size);
+	return 0;
+}
 
 // quick sort
 void hybrid_sort(int a[], int lo, int hi, int CUTOFF)
