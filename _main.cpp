@@ -7,8 +7,6 @@
 
 using namespace std;
 
-
-
 int main()
 {
 	int size = 100000;
@@ -40,7 +38,7 @@ int main()
 
 //----------------------------------------------------
 // Losowanie tablicy ze zbiorem testowym
-	char* arg[] = 	{"", tryb, str, "0", "10"}; 	//argumenty: {pusty, typ R P A D, ilosc(size), zakresMin, zakresMax}
+	char* arg[] = {"", tryb, str, "0", str}; 	//argumenty: {pusty, typ R P A D, ilosc(size), zakresMin, zakresMax}
 
 	cout << "Losowanie tablicy - ";
 	zbiorTestowy = arrgen(5, arg);
