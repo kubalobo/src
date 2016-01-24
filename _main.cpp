@@ -7,8 +7,6 @@
 
 using namespace std;
 
-
-
 int main()
 {
 	int size = 100000;
@@ -40,7 +38,7 @@ int main()
 
 //----------------------------------------------------
 // Losowanie tablicy ze zbiorem testowym
-	char* arg[] = 	{"", tryb, str, "0", "10"}; 	//argumenty: {pusty, typ R P A D, ilosc(size), zakresMin, zakresMax}
+	char* arg[] = {"", tryb, str, "0", str}; 	//argumenty: {pusty, typ R P A D, ilosc(size), zakresMin, zakresMax}
 
 	cout << "Losowanie tablicy - ";
 	zbiorTestowy = arrgen(5, arg);
@@ -145,6 +143,19 @@ int main()
 	cout << "Sortuje... " << endl;
 	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
 		hybrid_sort(tablica, size, 10);
+	end = GetTickCount(); 						// odczytaj liczbê milisekund po
+	cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
+	cout << "Otrzymano tablice - ";
+		arrchk(tablica, size);
+	cout << endl << endl;
+
+
+// Sort 9 - hybrid_3way_sort
+	copy(zbiorTestowy, zbiorTestowy + size, tablica);//zaladowanie zbioru testowego do tablicy roboczej
+	cout << "	hybrid_3way_sort" << endl;
+	cout << "Sortuje... " << endl;
+	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
+		hybrid_3way_sort(tablica, size, 10);
 	end = GetTickCount(); 						// odczytaj liczbê milisekund po
 	cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
 	cout << "Otrzymano tablice - ";
