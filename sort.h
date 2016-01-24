@@ -35,6 +35,9 @@ void selection_sort(int a[], int size);
 void hybrid_sort(int a[], int lo, int hi, int CUTOFF);
 void hybrid_sort(int a[], int size, int cutoff);
 
+void hybrid_3way_sort(int a[], int lo, int hi, int CUTOFF);
+void hybrid_3way_sort(int a[], int size, int cutoff);
+
 
 //...
 
