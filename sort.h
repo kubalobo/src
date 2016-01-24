@@ -32,6 +32,9 @@ void quick_sort(int a[], int size);
 
 void selection_sort(int a[], int size);
 
+void hybrid_sort(int a[], int lo, int hi, int CUTOFF);
+void hybrid_sort(int a[], int size, int cutoff);
+
 
 //...
 
