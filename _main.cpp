@@ -10,7 +10,6 @@ using namespace std;
 int main()
 {
 	int size = 100000;
-	char* tryb = "R";
 
 //	cout << "Ilosc elementow: ";
 //	cin >> size;
@@ -23,7 +22,7 @@ int main()
 	char str[10];
 	sprintf(str, "%d", size);		//zamiana size na string ( 10 na "10" bo w takiej formie lyknie to arrgen )
 
-	int* zbiorTestowy = new int[size];
+	int* zbiorTestowy;				//wskaznik na tablice, ktora zostanie utworzona w arrgen
 	int* tablica = new int[size];
 
 
@@ -38,7 +37,8 @@ int main()
 
 //----------------------------------------------------
 // Losowanie tablicy ze zbiorem testowym
-	char* arg[] = {"", tryb, str, "0", str}; 	//argumenty: {pusty, typ R P A D, ilosc(size), zakresMin, zakresMax}
+	char* arg[] = {"", "R", str, "0", str}; 	//argumenty: {pusty, typ R P A D, ilosc(size), zakresMin, zakresMax}
+	//char* arg[] = {"", "P", str, "2000"};		//partialy sorted - str==size -> ilosc, ilosc inwersji
 
 	cout << "Losowanie tablicy - ";
 	zbiorTestowy = arrgen(5, arg);
@@ -51,7 +51,7 @@ int main()
 	cout << "	bubble_sort" << endl;
 	cout << "Sortuje... " << endl;
 	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-		bubble_sort(tablica, size);
+		//bubble_sort(tablica, size);
 	end = GetTickCount(); 						// odczytaj liczbê milisekund po
 	cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
 	cout << "Otrzymano tablice - ";
@@ -161,4 +161,7 @@ int main()
 	cout << "Otrzymano tablice - ";
 		arrchk(tablica, size);
 	cout << endl << endl;
+
+	delete [] zbiorTestowy;
+	delete [] tablica;
 }
