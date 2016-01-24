@@ -134,13 +134,14 @@ int* array_ascending(int size, int* target)
 }
 
 // generate an array sorted in the descending order
-void array_descending(int size)
+int* array_descending(int size, int* target)
 {
-	cout << size << endl;
+	cout << size << "Kupa" << endl;
 	for (int i = size - 1; i >=0; i--)
 	{
-		cout << i << " ";
+		target[i] = size-i;
 	}
+	return target;
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -187,7 +188,7 @@ int* arrgen(int argc, char* argv[])
 	}
 	else if (!strcmp(argv[1], "D"))
 	{
-		array_descending(size);
+		return array_descending(size, target);
 	}
 	else
 	{
