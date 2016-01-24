@@ -31,7 +31,7 @@ int arrchk(int* arr, int size)
 		a = b;
 	}
 	
-	const char* stype[] = { "te same elementy", "rosnaca", "malejaca", "nieposortowana" };
+	const char* stype[] = { "te same elementy", "rosnaca", "malejaca", "randomowa" };
 	cout << stype[type];
 	return 0;
 }

@@ -19,10 +19,10 @@ inline int nextrand(int minv, int maxv);
 inline void swap(int& a, int& b);
 inline int invert(int& a, int& b);
 void error_message();
-void array_random(int size, int minv, int maxv);
-void array_partially_sorted(int size, int inv);
-void array_ascending(int size, int* target);
-void array_descending(int size);
+int* array_random(int size, int minv, int maxv, int* target);
+int* array_partially_sorted(int size, int inv, int* target);
+int* array_ascending(int size, int* target);
+int* array_descending(int size, int* target);
 int* arrgen(int argc, char* argv[]);
 
 

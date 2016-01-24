@@ -86,13 +86,13 @@ int* array_random(int size, int minv, int maxv, int target[])
 
 // generate a partially sorted array
 // with specified number of inversions
-void array_partially_sorted(int size, int inv)
+int* array_partially_sorted(int size, int inv, int target[])
 {
 	// check correctness
-	if (inv > (size * (size - 1)) / 2)
+	if (inv > ((long long)size * (size - 1)) / 2)
 	{
 		cerr << "Too many inversions..." << endl;
-		return;
+		return 0;
 	}
 
 	// generate a sorted array
@@ -113,9 +113,11 @@ void array_partially_sorted(int size, int inv)
 	cout << size << endl;
 	for (int i = 0; i < size; i++)
 	{
-		cout << a[i] << " ";
+		target[i] = a[i];
+		//cout << a[i] << " ";
 	}
 
+	return target;
 	// clean up
 	delete [] a;
 }
@@ -132,13 +134,14 @@ int* array_ascending(int size, int* target)
 }
 
 // generate an array sorted in the descending order
-void array_descending(int size)
+int* array_descending(int size, int* target)
 {
-	cout << size << endl;
+	cout << size << "Kupa" << endl;
 	for (int i = size - 1; i >=0; i--)
 	{
-		cout << i << " ";
+		target[i] = size-i;
 	}
+	return target;
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -177,7 +180,7 @@ int* arrgen(int argc, char* argv[])
 		int inv = atoi(argv[3]); // parse number of inversions
 		if (inv < 0) inv = 0;
 
-		array_partially_sorted(size, inv);
+		return array_partially_sorted(size, inv, target);
 	}
 	else if (!strcmp(argv[1], "A"))
 	{
@@ -185,7 +188,7 @@ int* arrgen(int argc, char* argv[])
 	}
 	else if (!strcmp(argv[1], "D"))
 	{
-		array_descending(size);
+		return array_descending(size, target);
 	}
 	else
 	{
