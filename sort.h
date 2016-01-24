@@ -29,13 +29,15 @@ void quick_sort_3way(int a[], int size);
 int partition(int a[], int lo, int hi);
 void quick_sort(int a[], int lo, int hi);
 void quick_sort(int a[], int size);
+<<<<<<< HEAD
+void quick_sort_3way(int a[], int lo, int hi);
+void quick_sort_3way(int a[], int size);
+=======
 
 void selection_sort(int a[], int size);
 
-void hybrid_sort(int a[], int lo, int hi, int CUTOFF);
-void hybrid_sort(int a[], int size, int cutoff);
-
 
 //...
+>>>>>>> origin/Weronika
 
 #endif /* SORT_H_ */
