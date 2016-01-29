@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <Windows.h>
 #include <algorithm>
-
+#include <time.h>
 
 #include "functions.h"
 #include "sort.h"
@@ -11,7 +11,9 @@ using namespace std;
 
 int main()
 {
-	int size = 100000000;
+	int size = 20;
+
+	srand((int)time(NULL));
 
 //	cout << "Ilosc elementow: ";
 //	cin >> size;
@@ -64,14 +66,14 @@ int main()
 		cout << "	hybrid_sort CUTOFF == " << 10 << endl;
 		cout << "Sortuje... " << endl;
 		start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-			hybrid_sort(tablica, size, 10, 0);
+			hybrid_sort(tablica, size, 5, 0);
 		end = GetTickCount(); 						// odczytaj liczbê milisekund po
 		cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
 		cout << "Otrzymano tablice - ";
 			arrchk(tablica, size);
 		cout << endl << endl;
 		//testowe wypisanie
-					for (int i = 0; i < 100; i++)
+					for (int i = 0; i < 20; i++)
 					{
 						cout << tablica[i] << " ";
 					}

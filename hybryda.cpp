@@ -77,7 +77,7 @@ int Tukey(int a[], int size)
 }
 
 // quick sort
-void quick_sort_hybryda(int a[], int lo, int hi, int tryb)
+/*void quick_sort_hybryda(int a[], int lo, int hi, int tryb)
 {
 	if (hi <= lo) return;         // stop when nothing to sort
 
@@ -88,21 +88,21 @@ void quick_sort_hybryda(int a[], int lo, int hi, int tryb)
 	else if(tryb == 1)
 	{
 		wybrano = mediana_losowe(a, hi + 1);
-		*find(a, a + hi, wybrano) = a[0];
+		*find(a, a + hi + 1, wybrano) = a[0];
 		a[0] = wybrano;
 		//exch(a, *find(a, a + hi, wylosowano),0);
 	}
 	else if(tryb == 2)
 	{
 		wybrano = Tukey(a, hi + 1);
-		*find(a, a + hi, wybrano) = a[0];
+		*find(a, a + hi + 1, wybrano) = a[0];
 		a[0] = wybrano;
 	}
 
 	int j = partition(a, lo, hi); // partition
 	quick_sort_hybryda(a, lo, j - 1, tryb);     // sort left half
 	quick_sort_hybryda(a, j + 1, hi, tryb);     // sort right half
-}
+}*/
 //
 //// sort the whole array (translate arguments)
 //void quick_sort_hybryda(int a[], int size)
@@ -114,8 +114,8 @@ void quick_sort_hybryda(int a[], int lo, int hi, int tryb)
 // quick sort z wyborem trybu partycjonowania
 void hybrid_sort(int a[], int lo, int hi, int CUTOFF, int tryb)
 {
+	int size = hi - lo + 1;
 	if (hi <= lo + CUTOFF - 1) { // insertion_sort when tables are small
-		int size = hi - lo + 1;
 		insertion_sort(a, size);
 		return;
 	}
@@ -127,21 +127,21 @@ void hybrid_sort(int a[], int lo, int hi, int CUTOFF, int tryb)
 	{}
 	else if(tryb == 1)
 	{
-		wybrano = mediana_losowe(a, hi + 1);
-		*find(a, a + hi, wybrano) = a[0];
+		wybrano = mediana_losowe(a, size);
+		*find(a, a + size, wybrano) = a[0];
 		a[0] = wybrano;
 		//exch(a, *find(a, a + hi, wylosowano),0);
 	}
 	else if(tryb == 2)
 	{
-		wybrano = Tukey(a, hi + 1);
-		*find(a, a + hi, wybrano) = a[0];
+		wybrano = Tukey(a, size);
+		*find(a, a + size, wybrano) = a[0];
 		a[0] = wybrano;
 	}
 
 	int j = partition(a, lo, hi); // partition
-	quick_sort_hybryda(a, lo, j - 1, tryb);     // sort left half
-	quick_sort_hybryda(a, j + 1, hi, tryb);     // sort right half
+	hybrid_sort(a, lo, j - 1, tryb);     // sort left half
+	hybrid_sort(a, j + 1, hi, tryb);     // sort right half
 }
 
 // sort the whole array (translate arguments)
