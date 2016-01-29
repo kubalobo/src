@@ -19,7 +19,7 @@ using namespace std;
 //////////////////////////////////////////////////////////////////////////
 
 // generate a next random integer
-inline int nextrand()
+int nextrand()
 {
 	return ((rand() & 0x7F) << 24) | 
 	       ((rand() & 0xFF) << 16) | 
@@ -28,7 +28,7 @@ inline int nextrand()
 }
 
 // generate a next random integer in the range of [minv,maxv]
-inline int nextrand(int minv, int maxv)
+int nextrand(int minv, int maxv)
 {
 	return nextrand() % (maxv - minv + 1) + minv;
 }

@@ -10,6 +10,7 @@
 #include <cstdlib>
 #include <time.h>
 #include "functions.h"
+#include <algorithm>
 
 using namespace std;
 
@@ -35,12 +36,7 @@ void mix(int a[], int size)  // mieszanie tablicy
 
 int mediana(int a[], int size)
 {
-	int middle;
-	if (size % 2 == 0)
-		middle = a[size / 2];
-	else
-		middle = a[(size - 1) / 2];
-	int b[3] = {a[0], middle, a[size - 1]};
+	int b[3] = {a[0], a[size / 2], a[size - 1]};
 	if (b[0] <= b[1])
 	{
 		if (b[0] >= b[2]) return b[0];
@@ -80,26 +76,78 @@ int Tukey(int a[], int size)
 	return mediana(med, 3);
 }
 
-
 // quick sort
-void hybrid_sort(int a[], int lo, int hi, int CUTOFF)
+void quick_sort_hybryda(int a[], int lo, int hi, int tryb)
 {
-	if (hi <= lo + CUTOFF - 1) { // insertion_sort when tables are small
+	if (hi <= lo) return;         // stop when nothing to sort
 
-		int size = hi - lo;
-		insertion_sort(a, size);
-		return;
+	int wybrano;
+
+	if(tryb == 0)
+	{}
+	else if(tryb == 1)
+	{
+		wybrano = mediana_losowe(a, hi + 1);
+		*find(a, a + hi, wybrano) = a[0];
+		a[0] = wybrano;
+		//exch(a, *find(a, a + hi, wylosowano),0);
+	}
+	else if(tryb == 2)
+	{
+		wybrano = Tukey(a, hi + 1);
+		*find(a, a + hi, wybrano) = a[0];
+		a[0] = wybrano;
 	}
 
 	int j = partition(a, lo, hi); // partition
 	quick_sort(a, lo, j - 1);     // sort left half
 	quick_sort(a, j + 1, hi);     // sort right half
 }
+//
+//// sort the whole array (translate arguments)
+//void quick_sort_hybryda(int a[], int size)
+//{
+//	quick_sort(a, 0, size -1);
+//}
+
+
+// quick sort z wyborem trybu partycjonowania
+void hybrid_sort(int a[], int lo, int hi, int CUTOFF, int tryb)
+{
+	if (hi <= lo + CUTOFF - 1) { // insertion_sort when tables are small
+		int size = hi - lo;
+		insertion_sort(a, size);
+		return;
+	}
+
+	//Tryb partycjonowania
+	int wybrano;
+
+	if(tryb == 0)
+	{}
+	else if(tryb == 1)
+	{
+		wybrano = mediana_losowe(a, hi + 1);
+		*find(a, a + hi, wybrano) = a[0];
+		a[0] = wybrano;
+		//exch(a, *find(a, a + hi, wylosowano),0);
+	}
+	else if(tryb == 2)
+	{
+		wybrano = Tukey(a, hi + 1);
+		*find(a, a + hi, wybrano) = a[0];
+		a[0] = wybrano;
+	}
+
+	int j = partition(a, lo, hi); // partition
+	quick_sort_hybryda(a, lo, j - 1, tryb);     // sort left half
+	quick_sort_hybryda(a, j + 1, hi, tryb);     // sort right half
+}
 
 // sort the whole array (translate arguments)
-void hybrid_sort(int a[], int size, int cutoff)
+void hybrid_sort(int a[], int size, int cutoff, int tryb)
 {
-	hybrid_sort(a, 0, size -1, cutoff);
+	hybrid_sort(a, 0, size -1, cutoff, tryb);
 }
 
 
