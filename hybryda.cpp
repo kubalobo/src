@@ -50,22 +50,23 @@ int mediana(int a[], int size)
 	return b[1];
 }
 
-int mediana_losowe(int a[], int size)
+int mediana_losowe(int a[], int lo, int hi)
 {
-	int i = nextrand(0, size - 1);
-	int j = nextrand(0, size - 1);
-	int k = nextrand(0, size - 1);
+	int i = nextrand(lo, hi);
+	int j = nextrand(lo, hi);
+	int k = nextrand(lo, hi);
 //	cout << endl << a[i] << ' ' << a[j] << ' ' << a[k] << endl;
 	int b[3] = {a[i], a[j], a[k]};
 	return mediana(b, 3);
 }
 
-int Tukey(int a[], int size)
+int Tukey(int a[], int lo, int hi)
 {
-	int eighth = size / 8;
+	int eighth = (hi - lo + 1) / 8;
 	int b[9];
 	for (int i = 0; i < 9; i++)
-		b[i] = a[i * eighth];
+		b[i] = a[lo + (i * eighth)];
+
 	int j[3] = {b[0], b[1], b[2]};
 	int k[3] = {b[3], b[4], b[5]};
 	int l[3] = {b[6], b[7], b[8]};
@@ -74,6 +75,25 @@ int Tukey(int a[], int size)
 	int l_med = mediana(l, 3);
 	int med[3] = {j_med, k_med, l_med};
 	return mediana(med, 3);
+}
+
+// insertion sort
+void insertion_sort(int a[], int lo, int hi)
+{
+	for (int i = lo; i < hi + 1; i++)
+	{
+		for (int j = i; j > 0; j--)
+		{
+			if (a[j] < a[j - 1])
+			{
+				exch(a, j, j - 1);
+			}
+			else
+			{
+				break;
+			}
+		}
+	}
 }
 
 // quick sort
@@ -114,9 +134,8 @@ int Tukey(int a[], int size)
 // quick sort z wyborem trybu partycjonowania
 void hybrid_sort(int a[], int lo, int hi, int CUTOFF, int tryb)
 {
-	int size = hi - lo + 1;
 	if (hi <= lo + CUTOFF - 1) { // insertion_sort when tables are small
-		insertion_sort(a, size);
+		insertion_sort(a, lo, hi);
 		return;
 	}
 
@@ -127,21 +146,20 @@ void hybrid_sort(int a[], int lo, int hi, int CUTOFF, int tryb)
 	{}
 	else if(tryb == 1)
 	{
-		wybrano = mediana_losowe(a, size);
-		*find(a, a + size, wybrano) = a[0];
-		a[0] = wybrano;
-		//exch(a, *find(a, a + hi, wylosowano),0);
+		wybrano = mediana_losowe(a, lo, hi);
+		*find(a + lo, a + hi, wybrano) = a[0];
+		a[lo] = wybrano;
 	}
 	else if(tryb == 2)
 	{
-		wybrano = Tukey(a, size);
-		*find(a, a + size, wybrano) = a[0];
-		a[0] = wybrano;
+		wybrano = Tukey(a, lo, hi);
+		*find(a + lo, a + hi, wybrano) = a[0];
+		a[lo] = wybrano;
 	}
 
 	int j = partition(a, lo, hi); // partition
-	hybrid_sort(a, lo, j - 1, tryb);     // sort left half
-	hybrid_sort(a, j + 1, hi, tryb);     // sort right half
+	hybrid_sort(a, lo, j - 1, CUTOFF, tryb);     // sort left half
+	hybrid_sort(a, j + 1, hi, CUTOFF, tryb);     // sort right half
 }
 
 // sort the whole array (translate arguments)
