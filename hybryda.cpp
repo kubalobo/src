@@ -34,9 +34,9 @@ void mix(int a[], int size)  // mieszanie tablicy
 	}
 }
 
-int mediana(int a[], int size)
+int mediana(int b[], int size)
 {
-	int b[3] = {a[0], a[size / 2], a[size - 1]};
+	//int b[3] = {a[0], a[size / 2], a[size - 1]};
 	if (b[0] <= b[1])
 	{
 		if (b[0] >= b[2]) return b[0];
