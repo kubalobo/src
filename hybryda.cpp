@@ -55,8 +55,9 @@ int mediana_losowe(int a[], int lo, int hi)
 	int i = nextrand(lo, hi);
 	int j = nextrand(lo, hi);
 	int k = nextrand(lo, hi);
-//	cout << endl << a[i] << ' ' << a[j] << ' ' << a[k] << endl;
+	//cout << endl << a[i] << ' ' << a[j] << ' ' << a[k] << endl;
 	int b[3] = {a[i], a[j], a[k]};
+	//cout << mediana(b, 3) << endl;
 	return mediana(b, 3);
 }
 
@@ -80,7 +81,7 @@ int Tukey(int a[], int lo, int hi)
 // insertion sort
 void insertion_sort(int a[], int lo, int hi)
 {
-	for (int i = lo; i < hi + 1; i++)
+	for (int i = lo; i <= hi + 1; i++)
 	{
 		for (int j = i; j > 0; j--)
 		{
@@ -95,40 +96,6 @@ void insertion_sort(int a[], int lo, int hi)
 		}
 	}
 }
-
-// quick sort
-/*void quick_sort_hybryda(int a[], int lo, int hi, int tryb)
-{
-	if (hi <= lo) return;         // stop when nothing to sort
-
-	int wybrano;
-
-	if(tryb == 0)
-	{}
-	else if(tryb == 1)
-	{
-		wybrano = mediana_losowe(a, hi + 1);
-		*find(a, a + hi + 1, wybrano) = a[0];
-		a[0] = wybrano;
-		//exch(a, *find(a, a + hi, wylosowano),0);
-	}
-	else if(tryb == 2)
-	{
-		wybrano = Tukey(a, hi + 1);
-		*find(a, a + hi + 1, wybrano) = a[0];
-		a[0] = wybrano;
-	}
-
-	int j = partition(a, lo, hi); // partition
-	quick_sort_hybryda(a, lo, j - 1, tryb);     // sort left half
-	quick_sort_hybryda(a, j + 1, hi, tryb);     // sort right half
-}*/
-//
-//// sort the whole array (translate arguments)
-//void quick_sort_hybryda(int a[], int size)
-//{
-//	quick_sort(a, 0, size -1);
-//}
 
 
 // quick sort z wyborem trybu partycjonowania
