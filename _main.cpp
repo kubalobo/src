@@ -10,7 +10,7 @@ using namespace std;
 
 int main()
 {
-	int size = 100000;
+	int size = 10000;
 
 //	cout << "Ilosc elementow: ";
 //	cin >> size;
@@ -31,10 +31,10 @@ int main()
 
 //----------------------------------------------------
 // Losowanie tablicy ze zbiorem testowym
-	char* arg[] = {"", "R", str, "0", str}; cout << "Arg R" << endl; 	//argumenty: {pusty, typ R P A D, ilosc(size), zakresMin, zakresMax}
-	//char* arg[] = {"", "P", str, "20000"}; cout << "Arg P" << endl;		//partialy sorted - str==size -> ilosc, ilosc inwersji
-	//char* arg[] = {"", "A", str};	cout << "Arg A" << endl;			//rosnaca (posortowana)
-	//char* arg[] = {"", "D", str};	cout << "Arg D" << endl;			//malejaca
+	char* arg[] = {(char*)"", (char*)"R", (char*)str, (char*)"0", (char*)str}; cout << "Arg R" << endl; 	//argumenty: {pusty, typ R P A D, ilosc(size), zakresMin, zakresMax}
+	//char* arg[] = {(char*)"", (char*)"P", (char*)str, (char*)"20000"}; cout << "Arg P" << endl;		//partialy sorted - str==size -> ilosc, ilosc inwersji
+	//char* arg[] = {(char*)"", (char*)"A", (char*)str};	cout << "Arg A" << endl;			//rosnaca (posortowana)
+	//char* arg[] = {(char*)"", (char*)"D", (char*)str};	cout << "Arg D" << endl;			//malejaca
 
 
 	cout << "Losowanie tablicy - ";
@@ -147,7 +147,7 @@ int main()
 	cout << "	selection_sort" << endl;
 	cout << "Sortuje... " << endl;
 	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-//		selection_sort(tablica, size);
+		selection_sort(tablica, size);
 	end = GetTickCount(); 						// odczytaj liczbê milisekund po
 	cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
 	cout << "Otrzymano tablice - ";
@@ -160,7 +160,7 @@ int main()
 	cout << "	hybrid_sort" << endl;
 	cout << "Sortuje... " << endl;
 	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-		//hybrid_sort(tablica, size, 10);
+		hybrid_sort(tablica, size, 10);
 	end = GetTickCount(); 						// odczytaj liczbê milisekund po
 	cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
 	cout << "Otrzymano tablice - ";
@@ -173,7 +173,7 @@ int main()
 	cout << "	hybrid_3way_sort" << endl;
 	cout << "Sortuje... " << endl;
 	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-//		hybrid_3way_sort(tablica, size, 10);
+		hybrid_3way_sort(tablica, size, 10);
 	end = GetTickCount(); 						// odczytaj liczbê milisekund po
 	cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
 	cout << "Otrzymano tablice - ";
