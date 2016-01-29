@@ -11,7 +11,7 @@ using namespace std;
 
 int main()
 {
-	int size = 100;
+	int size = 100000000;
 
 //	cout << "Ilosc elementow: ";
 //	cin >> size;
@@ -61,10 +61,10 @@ int main()
 	{
 		// hybrid_sort
 		copy(zbiorTestowy, zbiorTestowy + size, tablica);//zaladowanie zbioru testowego do tablicy roboczej
-		cout << "	hybrid_sort CUTOFF == " << 1 << endl;
+		cout << "	hybrid_sort CUTOFF == " << 10 << endl;
 		cout << "Sortuje... " << endl;
 		start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-			hybrid_sort(tablica, size, 100, 1);
+			hybrid_sort(tablica, size, 10, 0);
 		end = GetTickCount(); 						// odczytaj liczbê milisekund po
 		cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
 		cout << "Otrzymano tablice - ";

@@ -115,7 +115,7 @@ void quick_sort_hybryda(int a[], int lo, int hi, int tryb)
 void hybrid_sort(int a[], int lo, int hi, int CUTOFF, int tryb)
 {
 	if (hi <= lo + CUTOFF - 1) { // insertion_sort when tables are small
-		int size = hi - lo;
+		int size = hi - lo + 1;
 		insertion_sort(a, size);
 		return;
 	}
