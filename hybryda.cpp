@@ -103,7 +103,7 @@ void hybrid_sort(int a[], int size, int cutoff)
 }
 
 
-
+/*
 // test sorting
 int main(int argc, char* argv[])
 {
@@ -138,7 +138,7 @@ int main(int argc, char* argv[])
 	delete[] a;
 
 	return 0;
-}
+}*/
 
 
 

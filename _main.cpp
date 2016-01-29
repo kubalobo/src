@@ -8,7 +8,7 @@
 
 using namespace std;
 
-/*int main()
+int main()
 {
 	int size = 100000000;
 
@@ -182,4 +182,4 @@ using namespace std;
 
 	delete [] zbiorTestowy;
 	delete [] tablica;
-}*/
+}
