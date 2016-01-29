@@ -1,5 +1,4 @@
 /*
-/*
  * hybryda.cpp
  *
  *  Created on: 21 sty 2016
