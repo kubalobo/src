@@ -11,7 +11,7 @@ using namespace std;
 
 int main()
 {
-	int size = 100000;
+	int size = 10000000;
 
 	srand((int)time(NULL));
 
@@ -59,14 +59,14 @@ int main()
 
 
 //Petla dla roznych wartosci CUTOFF
-	for(int i = 10; i <= 20; i++)
+	for(int i = 3; i <= 20; i++)
 	{
 		// hybrid_sort
 		copy(zbiorTestowy, zbiorTestowy + size, tablica);//zaladowanie zbioru testowego do tablicy roboczej
 		cout << "	hybrid_sort CUTOFF == " << i << endl;
 		cout << "Sortuje... " << endl;
 		start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-			hybrid_sort(tablica, size, 100, 2);
+			hybrid_sort(tablica, size, i, 2);
 		end = GetTickCount(); 						// odczytaj liczbê milisekund po
 		cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
 		cout << "Otrzymano tablice - ";
