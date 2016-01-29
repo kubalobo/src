@@ -8,6 +8,8 @@
 #include <iostream>
 #include "sort.h"
 #include <cstdlib>
+#include <time.h>
+#include "functions.h"
 
 using namespace std;
 
@@ -22,10 +24,9 @@ inline void exch(int a[], int i, int j)
 
 void mix(int a[], int size)  // mieszanie tablicy
 {
+
 	for (int i = 0; i < size; i++) {
-		int j = int(rand() / RAND_MAX * size);
-		if (j == size)
-			j -= 1;
+		int j = nextrand(0, size - 1);
 		int t = a[i];
 		a[i] = a[j];
 		a[j] = t;
@@ -55,19 +56,12 @@ int mediana(int a[], int size)
 
 int mediana_losowe(int a[], int size)
 {
-	int i = int((rand() / RAND_MAX) * size);
-	if (i == size)
-		i -= 1;
-	int j = int((rand() / RAND_MAX) * size);
-	if (j == size)
-		j -= 1;
-	int k = int((rand() / RAND_MAX) * size);
-	if (j == size)
-		k -= 1;
-	cout << endl << i << ' ' << j << ' ' << k << endl;
+	int i = nextrand(0, size - 1);
+	int j = nextrand(0, size - 1);
+	int k = nextrand(0, size - 1);
+//	cout << endl << a[i] << ' ' << a[j] << ' ' << a[k] << endl;
 	int b[3] = {a[i], a[j], a[k]};
-	insertion_sort(b, size);
-	return b[1];
+	return mediana(b, 3);
 }
 
 int Tukey(int a[], int size)
@@ -110,9 +104,10 @@ void hybrid_sort(int a[], int size, int cutoff)
 
 
 
-/*// test sorting
+// test sorting
 int main(int argc, char* argv[])
 {
+	srand((int)time(NULL));
 	// read a size of data
 	int size = 0;
 	cin >> size;
@@ -124,8 +119,8 @@ int main(int argc, char* argv[])
 		cin >> a[i];
 	}
 
-	//find Tukey
-	cout << endl << Tukey(a, size) << endl;
+	//find mediana_losowe
+	cout << endl << mediana_losowe(a, size) << endl;
 
 	// sort the array
 	hybrid_sort(a, size, 3);
@@ -143,7 +138,7 @@ int main(int argc, char* argv[])
 	delete[] a;
 
 	return 0;
-}*/
+}
 
 
 
