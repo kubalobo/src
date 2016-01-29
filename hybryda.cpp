@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include "sort.h"
+#include <cstdlib>
 
 using namespace std;
 
@@ -18,6 +19,60 @@ inline void exch(int a[], int i, int j)
 	a[i] = a[j];
 	a[j] = t;
 }
+
+void mix(int a[], int size)  // mieszanie tablicy
+{
+	for (int i = 0; i < size; i++) {
+		int j = int(rand() / RAND_MAX * size);
+		if (j == size)
+			j -= 1;
+		int t = a[i];
+		a[i] = a[j];
+		a[j] = t;
+	}
+}
+
+/*
+int mediana(int a[], int size)
+{
+	int middle;
+	if (size % 2 == 0)
+		middle = a[size / 2];
+	else
+		middle = a[(size - 1) / 2];
+	int b[3] = {a[0], middle, a[size - 1]};
+	insertion_sort(b, size);
+	return b[1];
+}
+
+int mediana_losowe(int a[], int size)
+{
+	int i = int(rand() / RAND_MAX * size);
+	if (i == size)
+		i = 0;
+	int j = int(rand() / RAND_MAX * size);
+	if (j == size)
+		j = 0;
+	int k = int(rand() / RAND_MAX * size);
+	if (j == size)
+		k = 0;
+	int b[3] = {i, j, k};
+	insertion_sort(b, size);
+	return b[1];
+}
+
+int Tukey(int a[], int size)
+{
+	int ninth = size / 9;
+	int b[9];
+	for (int i = 0; i < size; i * ninth)
+		b[i] = a[i * ninth];
+	int j[3] = {b[0], b[1], b[2]};
+	int k[3] = {b[3], b[4], b[5]};
+	int l[3] = {b[6], b[7], b[8]};
+	return mediana(mediana(j, 2), mediana(k, 2), mediana(l, 2));
+}
+*/
 
 
 // quick sort
