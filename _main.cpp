@@ -10,7 +10,7 @@ using namespace std;
 
 int main()
 {
-	int size = 100000000;
+	int size = 100000;
 
 //	cout << "Ilosc elementow: ";
 //	cin >> size;
@@ -21,7 +21,7 @@ int main()
 //	cout << endl << endl;
 
 	char str[10];
-	sprintf(str, "%d", size);		//zamiana size na string ( 10 na "10" bo w takiej formie lyknie to arrgen )
+	sprintf(str, "%d", size);		//zamiana size na string ( 10 na "10" bo w takiej formie przyjmie to arrgen )
 
 	int* zbiorTestowy;				//wskaznik na tablice, ktora zostanie utworzona w arrgen
 	int* tablica = new int[size];
@@ -43,31 +43,33 @@ int main()
 		arrchk(zbiorTestowy, size);					//jaka tablice otrzymano
 	cout << endl << endl;
 
+/*
 	//testowe wypisanie
 			for (int i = 0; i < 100; i++)
 			{
 				cout << zbiorTestowy[i] << " ";
 			}
 		cout << endl;
+*/
 
-		// Sort 10 - std::sort
-			copy(zbiorTestowy, zbiorTestowy + size, tablica);//zaladowanie zbioru testowego do tablicy roboczej
-			cout << "	std::sort" << endl;
-			cout << "Sortuje... " << endl;
-			start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-				sort(tablica, tablica + size);
-			end = GetTickCount(); 						// odczytaj liczbê milisekund po
-			cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
-			cout << "Otrzymano tablice - ";
-				arrchk(tablica, size);
-			cout << endl << endl;
+// Sort 10 - std::sort
+	copy(zbiorTestowy, zbiorTestowy + size, tablica);//zaladowanie zbioru testowego do tablicy roboczej
+	cout << "	std::sort" << endl;
+	cout << "Sortuje... " << endl;
+	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
+		sort(tablica, tablica + size);
+	end = GetTickCount(); 						// odczytaj liczbê milisekund po
+	cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
+	cout << "Otrzymano tablice - ";
+		arrchk(tablica, size);
+	cout << endl << endl;
 
 // Sort 1 - bubble_sort
 	copy(zbiorTestowy, zbiorTestowy + size, tablica);//zaladowanie zbioru testowego do tablicy roboczej
 	cout << "	bubble_sort" << endl;
 	cout << "Sortuje... " << endl;
 	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-//		bubble_sort(tablica, size);
+		bubble_sort(tablica, size);
 	end = GetTickCount(); 						// odczytaj liczbê milisekund po
 	cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
 	cout << "Otrzymano tablice - ";
@@ -80,7 +82,7 @@ int main()
 	cout << "	insertion_sort" << endl;
 	cout << "Sortuje... " << endl;
 	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-//		insertion_sort(tablica, size);
+		insertion_sort(tablica, size);
 	end = GetTickCount(); 						// odczytaj liczbê milisekund po
 	cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
 	cout << "Otrzymano tablice - ";
