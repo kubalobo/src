@@ -136,7 +136,6 @@ int* array_ascending(int size, int* target)
 // generate an array sorted in the descending order
 int* array_descending(int size, int* target)
 {
-	cout << size << "Kupa" << endl;
 	for (int i = size - 1; i >=0; i--)
 	{
 		target[i] = size-i;
