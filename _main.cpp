@@ -3,6 +3,7 @@
 #include <Windows.h>
 #include <algorithm>
 
+
 #include "functions.h"
 #include "sort.h"
 
@@ -10,7 +11,7 @@ using namespace std;
 
 int main()
 {
-	int size = 100000;
+	int size = 10000;
 
 //	cout << "Ilosc elementow: ";
 //	cin >> size;
@@ -160,7 +161,7 @@ int main()
 	cout << "	hybrid_sort" << endl;
 	cout << "Sortuje... " << endl;
 	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-		hybrid_sort(tablica, size, 10);
+		hybrid_sort(tablica, size, 10, 0);
 	end = GetTickCount(); 						// odczytaj liczbê milisekund po
 	cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
 	cout << "Otrzymano tablice - ";

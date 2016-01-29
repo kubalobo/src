@@ -14,8 +14,8 @@
 int arrchk(int* arr, int size);
 
 //arrgen.cpp
-inline int nextrand();
-inline int nextrand(int minv, int maxv);
+int nextrand();
+int nextrand(int minv, int maxv);
 inline void swap(int& a, int& b);
 inline int invert(int& a, int& b);
 void error_message();
