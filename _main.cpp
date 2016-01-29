@@ -47,12 +47,12 @@ int main()
 	cout << endl << endl;
 
 
-	//testowe wypisanie
+/*	//testowe wypisanie
 			for (int i = 0; i < 100; i++)
 			{
 				cout << zbiorTestowy[i] << " ";
 			}
-		cout << endl;
+		cout << endl;*/
 
 
 //----------------------------------------------------
@@ -66,18 +66,12 @@ int main()
 		cout << "	hybrid_sort CUTOFF == " << i << endl;
 		cout << "Sortuje... " << endl;
 		start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-			hybrid_sort(tablica, size, i, 2);
+			hybrid_sort(tablica, size, i, 2);	// i -> CUTOFF - automat testuje po kolei ||||| ostatni parametr to tryb wyboru elem partycjonujacego 0(pierwszy), 1(mediana_losowe), 2(Tukey)
 		end = GetTickCount(); 						// odczytaj liczbê milisekund po
 		cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
 		cout << "Otrzymano tablice - ";
 			arrchk(tablica, size);
 		cout << endl << endl;
-		//testowe wypisanie
-					for (int i = 0; i < 20; i++)
-					{
-						cout << tablica[i] << " ";
-					}
-				cout << endl;
 	}
 
 	delete [] zbiorTestowy;
