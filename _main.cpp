@@ -34,8 +34,8 @@ int main()
 
 //----------------------------------------------------
 // Losowanie tablicy ze zbiorem testowym
-	char* arg[] = {(char*)"", (char*)"R", (char*)str, (char*)"0", (char*)str}; cout << "Arg R" << endl; 	//argumenty: {pusty, typ R P A D, ilosc(size), zakresMin, zakresMax}
-	//char* arg[] = {(char*)"", (char*)"P", (char*)str, (char*)"20000"}; cout << "Arg P" << endl;			//partialy sorted - str==size -> ilosc, ilosc inwersji
+	//char* arg[] = {(char*)"", (char*)"R", (char*)str, (char*)"0", (char*)str}; cout << "Arg R" << endl; 	//argumenty: {pusty, typ R P A D, ilosc(size), zakresMin, zakresMax}
+	char* arg[] = {(char*)"", (char*)"P", (char*)str, (char*)"20000"}; cout << "Arg P" << endl;			//partialy sorted - str==size -> ilosc, ilosc inwersji
 	//char* arg[] = {(char*)"", (char*)"A", (char*)str};	cout << "Arg A" << endl;						//rosnaca (posortowana)
 	//char* arg[] = {(char*)"", (char*)"D", (char*)str};	cout << "Arg D" << endl;						//malejaca
 

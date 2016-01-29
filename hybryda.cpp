@@ -34,20 +34,25 @@ void mix(int a[], int size)  // mieszanie tablicy
 	}
 }
 
-int mediana(int a[], int size)
+
+
+inline int middle_elem(int a[], int i, int j, int k)
 {
-	int b[3] = {a[0], a[size / 2], a[size - 1]};
-	if (b[0] <= b[1])
+	if (a[i] <= a[j])
 	{
-		if (b[0] >= b[2]) return b[0];
-		else return (b[1] <= b[2] ? b[1] : b[2]);
+		if (a[i] >= a[k]) return i;
+		else return (a[j] <= a[k] ? j : k);
 	}
 	else
 	{
-		if (b[0] <= b[2]) return b[0];
-		else return (b[1] >= b[2] ? b[1] : b[2]);
+		if (a[i] <= a[k]) return i;
+		else return (a[j] >= a[k] ? j : k);
 	}
-	return b[1];
+}
+
+int mediana(int a[], int size)
+{
+	return middle_elem(a, 0, size / 2, size - 1);
 }
 
 int mediana_losowe(int a[], int lo, int hi)
@@ -56,26 +61,17 @@ int mediana_losowe(int a[], int lo, int hi)
 	int j = nextrand(lo, hi);
 	int k = nextrand(lo, hi);
 	//cout << endl << a[i] << ' ' << a[j] << ' ' << a[k] << endl;
-	int b[3] = {a[i], a[j], a[k]};
-	//cout << mediana(b, 3) << endl;
-	return mediana(b, 3);
+	return middle_elem(a, i, j, k);
 }
 
 int Tukey(int a[], int lo, int hi)
 {
 	int eighth = (hi - lo + 1) / 8;
-	int b[9];
-	for (int i = 0; i < 9; i++)
-		b[i] = a[lo + (i * eighth)];
-
-	int j[3] = {b[0], b[1], b[2]};
-	int k[3] = {b[3], b[4], b[5]};
-	int l[3] = {b[6], b[7], b[8]};
-	int j_med = mediana(j, 3);
-	int k_med = mediana(k, 3);
-	int l_med = mediana(l, 3);
-	int med[3] = {j_med, k_med, l_med};
-	return mediana(med, 3);
+	int mid = lo + (hi - lo) / 2;
+	int j_med = middle_elem(a, lo, lo + eighth, lo + eighth + eighth);
+	int k_med = middle_elem(a, mid - eighth, mid, mid + eighth);
+	int l_med = middle_elem(a, hi - eighth - eighth, hi - eighth, eighth);
+	return middle_elem(a, j_med, k_med, l_med);
 }
 
 // insertion sort
@@ -114,14 +110,12 @@ void hybrid_sort(int a[], int lo, int hi, int CUTOFF, int tryb)
 	else if(tryb == 1)
 	{
 		wybrano = mediana_losowe(a, lo, hi);
-		*find(a + lo, a + hi, wybrano) = a[0];
-		a[lo] = wybrano;
+		exch(a, wybrano, lo);
 	}
 	else if(tryb == 2)
 	{
 		wybrano = Tukey(a, lo, hi);
-		*find(a + lo, a + hi, wybrano) = a[0];
-		a[lo] = wybrano;
+		exch(a, wybrano, lo);
 	}
 
 	int j = partition(a, lo, hi); // partition
