@@ -11,7 +11,7 @@ using namespace std;
 
 int main()
 {
-	int size = 10000;
+	int size = 100;
 
 //	cout << "Ilosc elementow: ";
 //	cin >> size;
@@ -44,144 +44,39 @@ int main()
 		arrchk(zbiorTestowy, size);					//jaka tablice otrzymano
 	cout << endl << endl;
 
-/*
+
 	//testowe wypisanie
 			for (int i = 0; i < 100; i++)
 			{
 				cout << zbiorTestowy[i] << " ";
 			}
 		cout << endl;
-*/
-
-// Sort 10 - std::sort
-	copy(zbiorTestowy, zbiorTestowy + size, tablica);//zaladowanie zbioru testowego do tablicy roboczej
-	cout << "	std::sort" << endl;
-	cout << "Sortuje... " << endl;
-	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-		sort(tablica, tablica + size);
-	end = GetTickCount(); 						// odczytaj liczbê milisekund po
-	cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
-	cout << "Otrzymano tablice - ";
-		arrchk(tablica, size);
-	cout << endl << endl;
-
-// Sort 1 - bubble_sort
-	copy(zbiorTestowy, zbiorTestowy + size, tablica);//zaladowanie zbioru testowego do tablicy roboczej
-	cout << "	bubble_sort" << endl;
-	cout << "Sortuje... " << endl;
-	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-		bubble_sort(tablica, size);
-	end = GetTickCount(); 						// odczytaj liczbê milisekund po
-	cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
-	cout << "Otrzymano tablice - ";
-		arrchk(tablica, size);
-	cout << endl << endl;
 
 
-// Sort 2 - insertion_sort
-	copy(zbiorTestowy, zbiorTestowy + size, tablica);//zaladowanie zbioru testowego do tablicy roboczej
-	cout << "	insertion_sort" << endl;
-	cout << "Sortuje... " << endl;
-	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-		insertion_sort(tablica, size);
-	end = GetTickCount(); 						// odczytaj liczbê milisekund po
-	cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
-	cout << "Otrzymano tablice - ";
-		arrchk(tablica, size);
-	cout << endl << endl;
+//----------------------------------------------------
 
 
-// Sort 3 - merge_sort_bottom_up
-	copy(zbiorTestowy, zbiorTestowy + size, tablica);//zaladowanie zbioru testowego do tablicy roboczej
-	cout << "	merge_sort_bottom_up" << endl;
-	cout << "Sortuje... " << endl;
-	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-		merge_sort_bottom_up(tablica, size);
-	end = GetTickCount(); 						// odczytaj liczbê milisekund po
-	cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
-	cout << "Otrzymano tablice - ";
-		arrchk(tablica, size);
-	cout << endl << endl;
-
-
-// Sort 4 - merge_sort
-	copy(zbiorTestowy, zbiorTestowy + size, tablica);//zaladowanie zbioru testowego do tablicy roboczej
-	cout << "	merge_sort" << endl;
-	cout << "Sortuje... " << endl;
-	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-		merge_sort(tablica, size);
-	end = GetTickCount(); 						// odczytaj liczbê milisekund po
-	cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
-	cout << "Otrzymano tablice - ";
-		arrchk(tablica, size);
-	cout << endl << endl;
-
-
-// Sort 5 - quick_sort_3way
-	copy(zbiorTestowy, zbiorTestowy + size, tablica);//zaladowanie zbioru testowego do tablicy roboczej
-	cout << "	quick_sort_3way" << endl;
-	cout << "Sortuje... " << endl;
-	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-		quick_sort_3way(tablica, size);
-	end = GetTickCount(); 						// odczytaj liczbê milisekund po
-	cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
-	cout << "Otrzymano tablice - ";
-		arrchk(tablica, size);
-	cout << endl << endl;
-
-
-// Sort 6 - quick_sort
-	copy(zbiorTestowy, zbiorTestowy + size, tablica);//zaladowanie zbioru testowego do tablicy roboczej
-	cout << "	quick_sort" << endl;
-	cout << "Sortuje... " << endl;
-	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-		quick_sort(tablica, size);
-	end = GetTickCount(); 						// odczytaj liczbê milisekund po
-	cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
-	cout << "Otrzymano tablice - ";
-		arrchk(tablica, size);
-	cout << endl << endl;
-
-
-// Sort 7 - selection_sort
-	copy(zbiorTestowy, zbiorTestowy + size, tablica);//zaladowanie zbioru testowego do tablicy roboczej
-	cout << "	selection_sort" << endl;
-	cout << "Sortuje... " << endl;
-	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-		selection_sort(tablica, size);
-	end = GetTickCount(); 						// odczytaj liczbê milisekund po
-	cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
-	cout << "Otrzymano tablice - ";
-		arrchk(tablica, size);
-	cout << endl << endl;
-
-
-// Sort 8 - hybrid_sort
-	copy(zbiorTestowy, zbiorTestowy + size, tablica);//zaladowanie zbioru testowego do tablicy roboczej
-	cout << "	hybrid_sort" << endl;
-	cout << "Sortuje... " << endl;
-	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-		hybrid_sort(tablica, size, 10, 0);
-	end = GetTickCount(); 						// odczytaj liczbê milisekund po
-	cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
-	cout << "Otrzymano tablice - ";
-		arrchk(tablica, size);
-	cout << endl << endl;
-
-
-// Sort 9 - hybrid_3way_sort
-	copy(zbiorTestowy, zbiorTestowy + size, tablica);//zaladowanie zbioru testowego do tablicy roboczej
-	cout << "	hybrid_3way_sort" << endl;
-	cout << "Sortuje... " << endl;
-	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-		hybrid_3way_sort(tablica, size, 10);
-	end = GetTickCount(); 						// odczytaj liczbê milisekund po
-	cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
-	cout << "Otrzymano tablice - ";
-		arrchk(tablica, size);
-	cout << endl << endl;
-
-
+//Petla dla roznych wartosci CUTOFF
+	//for(int i = 0; i <= 20; i++)
+	{
+		// hybrid_sort
+		copy(zbiorTestowy, zbiorTestowy + size, tablica);//zaladowanie zbioru testowego do tablicy roboczej
+		cout << "	hybrid_sort CUTOFF == " << 1 << endl;
+		cout << "Sortuje... " << endl;
+		start = GetTickCount(); 					// odczytaj liczbê milisekund przed
+			hybrid_sort(tablica, size, 100, 1);
+		end = GetTickCount(); 						// odczytaj liczbê milisekund po
+		cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
+		cout << "Otrzymano tablice - ";
+			arrchk(tablica, size);
+		cout << endl << endl;
+		//testowe wypisanie
+					for (int i = 0; i < 100; i++)
+					{
+						cout << tablica[i] << " ";
+					}
+				cout << endl;
+	}
 
 	delete [] zbiorTestowy;
 	delete [] tablica;

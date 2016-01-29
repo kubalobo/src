@@ -100,8 +100,8 @@ void quick_sort_hybryda(int a[], int lo, int hi, int tryb)
 	}
 
 	int j = partition(a, lo, hi); // partition
-	quick_sort(a, lo, j - 1);     // sort left half
-	quick_sort(a, j + 1, hi);     // sort right half
+	quick_sort_hybryda(a, lo, j - 1, tryb);     // sort left half
+	quick_sort_hybryda(a, j + 1, hi, tryb);     // sort right half
 }
 //
 //// sort the whole array (translate arguments)
