@@ -8,6 +8,9 @@
 #include <iostream>
 #include "sort.h"
 #include <cstdlib>
+#include <time.h>
+#include "functions.h"
+#include <algorithm>
 
 using namespace std;
 
@@ -22,10 +25,9 @@ inline void exch(int a[], int i, int j)
 
 void mix(int a[], int size)  // mieszanie tablicy
 {
-	for (int i = 0; i < a; i++) {
-		int j = int(rand() * size / RAND_MAX);
-		if (j == size)
-			j -= 1;
+
+	for (int i = 0; i < size; i++) {
+		int j = nextrand(0, size - 1);
 		int t = a[i];
 		a[i] = a[j];
 		a[j] = t;
@@ -34,42 +36,126 @@ void mix(int a[], int size)  // mieszanie tablicy
 
 int mediana(int a[], int size)
 {
-	int middle;
-	if (size % 2 == 0)
-		middle = a[size / 2];
+	int b[3] = {a[0], a[size / 2], a[size - 1]};
+	if (b[0] <= b[1])
+	{
+		if (b[0] >= b[2]) return b[0];
+		else return (b[1] <= b[2] ? b[1] : b[2]);
+	}
 	else
-		middle = a[(size - 1) / 2];
-	int b[3] = {a[0], middle, a[size - 1]};
-	insertion_sort(b, size);
-	return 0;
+	{
+		if (b[0] <= b[2]) return b[0];
+		else return (b[1] >= b[2] ? b[1] : b[2]);
+	}
+	return b[1];
+}
+
+int mediana_losowe(int a[], int size)
+{
+	int i = nextrand(0, size - 1);
+	int j = nextrand(0, size - 1);
+	int k = nextrand(0, size - 1);
+//	cout << endl << a[i] << ' ' << a[j] << ' ' << a[k] << endl;
+	int b[3] = {a[i], a[j], a[k]};
+	return mediana(b, 3);
+}
+
+int Tukey(int a[], int size)
+{
+	int eighth = size / 8;
+	int b[9];
+	for (int i = 0; i < 9; i++)
+		b[i] = a[i * eighth];
+	int j[3] = {b[0], b[1], b[2]};
+	int k[3] = {b[3], b[4], b[5]};
+	int l[3] = {b[6], b[7], b[8]};
+	int j_med = mediana(j, 3);
+	int k_med = mediana(k, 3);
+	int l_med = mediana(l, 3);
+	int med[3] = {j_med, k_med, l_med};
+	return mediana(med, 3);
 }
 
 // quick sort
-void hybrid_sort(int a[], int lo, int hi, int CUTOFF)
+void quick_sort_hybryda(int a[], int lo, int hi, int tryb)
 {
-	if (hi <= lo + CUTOFF - 1) { // insertion_sort when tables are small
+	if (hi <= lo) return;         // stop when nothing to sort
 
-		int size = hi - lo;
-		insertion_sort(a, size);
-		return;
+	int wybrano;
+
+	if(tryb == 0)
+	{}
+	else if(tryb == 1)
+	{
+		wybrano = mediana_losowe(a, hi + 1);
+		*find(a, a + hi, wybrano) = a[0];
+		a[0] = wybrano;
+		//exch(a, *find(a, a + hi, wylosowano),0);
+	}
+	else if(tryb == 2)
+	{
+		wybrano = Tukey(a, hi + 1);
+		*find(a, a + hi, wybrano) = a[0];
+		a[0] = wybrano;
 	}
 
 	int j = partition(a, lo, hi); // partition
 	quick_sort(a, lo, j - 1);     // sort left half
 	quick_sort(a, j + 1, hi);     // sort right half
 }
+//
+//// sort the whole array (translate arguments)
+//void quick_sort_hybryda(int a[], int size)
+//{
+//	quick_sort(a, 0, size -1);
+//}
+
+
+// quick sort z wyborem trybu partycjonowania
+void hybrid_sort(int a[], int lo, int hi, int CUTOFF, int tryb)
+{
+	if (hi <= lo + CUTOFF - 1) { // insertion_sort when tables are small
+		int size = hi - lo;
+		insertion_sort(a, size);
+		return;
+	}
+
+	//Tryb partycjonowania
+	int wybrano;
+
+	if(tryb == 0)
+	{}
+	else if(tryb == 1)
+	{
+		wybrano = mediana_losowe(a, hi + 1);
+		*find(a, a + hi, wybrano) = a[0];
+		a[0] = wybrano;
+		//exch(a, *find(a, a + hi, wylosowano),0);
+	}
+	else if(tryb == 2)
+	{
+		wybrano = Tukey(a, hi + 1);
+		*find(a, a + hi, wybrano) = a[0];
+		a[0] = wybrano;
+	}
+
+	int j = partition(a, lo, hi); // partition
+	quick_sort_hybryda(a, lo, j - 1, tryb);     // sort left half
+	quick_sort_hybryda(a, j + 1, hi, tryb);     // sort right half
+}
 
 // sort the whole array (translate arguments)
-void hybrid_sort(int a[], int size, int cutoff)
+void hybrid_sort(int a[], int size, int cutoff, int tryb)
 {
-	hybrid_sort(a, 0, size -1, cutoff);
+	hybrid_sort(a, 0, size -1, cutoff, tryb);
 }
 
 
-
-/*// test sorting
+/*
+// test sorting
 int main(int argc, char* argv[])
 {
+	srand((int)time(NULL));
 	// read a size of data
 	int size = 0;
 	cin >> size;
@@ -81,6 +167,9 @@ int main(int argc, char* argv[])
 		cin >> a[i];
 	}
 
+	//find mediana_losowe
+	cout << endl << mediana_losowe(a, size) << endl;
+
 	// sort the array
 	hybrid_sort(a, size, 3);
 
@@ -89,6 +178,9 @@ int main(int argc, char* argv[])
 	{
 		cout << a[i] << " ";
 	}
+
+
+
 
 	// clean up
 	delete[] a;

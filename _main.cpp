@@ -3,6 +3,7 @@
 #include <Windows.h>
 #include <algorithm>
 
+
 #include "functions.h"
 #include "sort.h"
 
@@ -10,7 +11,7 @@ using namespace std;
 
 int main()
 {
-	int size = 100000000;
+	int size = 10000;
 
 //	cout << "Ilosc elementow: ";
 //	cin >> size;
@@ -21,7 +22,7 @@ int main()
 //	cout << endl << endl;
 
 	char str[10];
-	sprintf(str, "%d", size);		//zamiana size na string ( 10 na "10" bo w takiej formie lyknie to arrgen )
+	sprintf(str, "%d", size);		//zamiana size na string ( 10 na "10" bo w takiej formie przyjmie to arrgen )
 
 	int* zbiorTestowy;				//wskaznik na tablice, ktora zostanie utworzona w arrgen
 	int* tablica = new int[size];
@@ -31,10 +32,10 @@ int main()
 
 //----------------------------------------------------
 // Losowanie tablicy ze zbiorem testowym
-	char* arg[] = {"", "R", str, "0", str}; cout << "Arg R" << endl; 	//argumenty: {pusty, typ R P A D, ilosc(size), zakresMin, zakresMax}
-	//char* arg[] = {"", "P", str, "20000"}; cout << "Arg P" << endl;		//partialy sorted - str==size -> ilosc, ilosc inwersji
-	//char* arg[] = {"", "A", str};	cout << "Arg A" << endl;			//rosnaca (posortowana)
-	//char* arg[] = {"", "D", str};	cout << "Arg D" << endl;			//malejaca
+	char* arg[] = {(char*)"", (char*)"R", (char*)str, (char*)"0", (char*)str}; cout << "Arg R" << endl; 	//argumenty: {pusty, typ R P A D, ilosc(size), zakresMin, zakresMax}
+	//char* arg[] = {(char*)"", (char*)"P", (char*)str, (char*)"20000"}; cout << "Arg P" << endl;			//partialy sorted - str==size -> ilosc, ilosc inwersji
+	//char* arg[] = {(char*)"", (char*)"A", (char*)str};	cout << "Arg A" << endl;						//rosnaca (posortowana)
+	//char* arg[] = {(char*)"", (char*)"D", (char*)str};	cout << "Arg D" << endl;						//malejaca
 
 
 	cout << "Losowanie tablicy - ";
@@ -43,31 +44,33 @@ int main()
 		arrchk(zbiorTestowy, size);					//jaka tablice otrzymano
 	cout << endl << endl;
 
+/*
 	//testowe wypisanie
 			for (int i = 0; i < 100; i++)
 			{
 				cout << zbiorTestowy[i] << " ";
 			}
 		cout << endl;
+*/
 
-		// Sort 10 - std::sort
-			copy(zbiorTestowy, zbiorTestowy + size, tablica);//zaladowanie zbioru testowego do tablicy roboczej
-			cout << "	std::sort" << endl;
-			cout << "Sortuje... " << endl;
-			start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-				sort(tablica, tablica + size);
-			end = GetTickCount(); 						// odczytaj liczbê milisekund po
-			cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
-			cout << "Otrzymano tablice - ";
-				arrchk(tablica, size);
-			cout << endl << endl;
+// Sort 10 - std::sort
+	copy(zbiorTestowy, zbiorTestowy + size, tablica);//zaladowanie zbioru testowego do tablicy roboczej
+	cout << "	std::sort" << endl;
+	cout << "Sortuje... " << endl;
+	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
+		sort(tablica, tablica + size);
+	end = GetTickCount(); 						// odczytaj liczbê milisekund po
+	cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
+	cout << "Otrzymano tablice - ";
+		arrchk(tablica, size);
+	cout << endl << endl;
 
 // Sort 1 - bubble_sort
 	copy(zbiorTestowy, zbiorTestowy + size, tablica);//zaladowanie zbioru testowego do tablicy roboczej
 	cout << "	bubble_sort" << endl;
 	cout << "Sortuje... " << endl;
 	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-//		bubble_sort(tablica, size);
+		bubble_sort(tablica, size);
 	end = GetTickCount(); 						// odczytaj liczbê milisekund po
 	cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
 	cout << "Otrzymano tablice - ";
@@ -80,7 +83,7 @@ int main()
 	cout << "	insertion_sort" << endl;
 	cout << "Sortuje... " << endl;
 	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-//		insertion_sort(tablica, size);
+		insertion_sort(tablica, size);
 	end = GetTickCount(); 						// odczytaj liczbê milisekund po
 	cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
 	cout << "Otrzymano tablice - ";
@@ -145,7 +148,7 @@ int main()
 	cout << "	selection_sort" << endl;
 	cout << "Sortuje... " << endl;
 	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-//		selection_sort(tablica, size);
+		selection_sort(tablica, size);
 	end = GetTickCount(); 						// odczytaj liczbê milisekund po
 	cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
 	cout << "Otrzymano tablice - ";
@@ -158,7 +161,7 @@ int main()
 	cout << "	hybrid_sort" << endl;
 	cout << "Sortuje... " << endl;
 	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-		//hybrid_sort(tablica, size, 10);
+		hybrid_sort(tablica, size, 10, 0);
 	end = GetTickCount(); 						// odczytaj liczbê milisekund po
 	cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
 	cout << "Otrzymano tablice - ";
@@ -171,7 +174,7 @@ int main()
 	cout << "	hybrid_3way_sort" << endl;
 	cout << "Sortuje... " << endl;
 	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-//		hybrid_3way_sort(tablica, size, 10);
+		hybrid_3way_sort(tablica, size, 10);
 	end = GetTickCount(); 						// odczytaj liczbê milisekund po
 	cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
 	cout << "Otrzymano tablice - ";
