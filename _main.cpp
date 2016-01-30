@@ -11,7 +11,7 @@ using namespace std;
 
 int main()
 {
-	int size = 10000;
+	int size = 100000;
 
 //	cout << "Ilosc elementow: ";
 //	cin >> size;
@@ -58,7 +58,7 @@ int main()
 	cout << "	bubble_sort" << endl;
 	cout << "Sortuje... " << endl;
 	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-		bubble_sort(tablica, size);
+//		bubble_sort(tablica, size);
 	end = GetTickCount(); 						// odczytaj liczbê milisekund po
 	cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
 	cout << "Otrzymano tablice - ";
@@ -71,7 +71,7 @@ int main()
 	cout << "	insertion_sort" << endl;
 	cout << "Sortuje... " << endl;
 	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-		insertion_sort(tablica, size);
+//		insertion_sort(tablica, size);
 	end = GetTickCount(); 						// odczytaj liczbê milisekund po
 	cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
 	cout << "Otrzymano tablice - ";
@@ -84,7 +84,7 @@ int main()
 	cout << "	merge_sort_bottom_up" << endl;
 	cout << "Sortuje... " << endl;
 	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-		merge_sort_bottom_up(tablica, size);
+//		merge_sort_bottom_up(tablica, size);
 	end = GetTickCount(); 						// odczytaj liczbê milisekund po
 	cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
 	cout << "Otrzymano tablice - ";
@@ -97,7 +97,7 @@ int main()
 	cout << "	merge_sort" << endl;
 	cout << "Sortuje... " << endl;
 	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-		merge_sort(tablica, size);
+//		merge_sort(tablica, size);
 	end = GetTickCount(); 						// odczytaj liczbê milisekund po
 	cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
 	cout << "Otrzymano tablice - ";
@@ -110,7 +110,7 @@ int main()
 	cout << "	quick_sort_3way" << endl;
 	cout << "Sortuje... " << endl;
 	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-		quick_sort_3way(tablica, size);
+//		quick_sort_3way(tablica, size);
 	end = GetTickCount(); 						// odczytaj liczbê milisekund po
 	cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
 	cout << "Otrzymano tablice - ";
@@ -123,7 +123,7 @@ int main()
 	cout << "	quick_sort" << endl;
 	cout << "Sortuje... " << endl;
 	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-		quick_sort(tablica, size);
+//		quick_sort(tablica, size);
 	end = GetTickCount(); 						// odczytaj liczbê milisekund po
 	cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
 	cout << "Otrzymano tablice - ";
@@ -136,7 +136,7 @@ int main()
 	cout << "	selection_sort" << endl;
 	cout << "Sortuje... " << endl;
 	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-		selection_sort(tablica, size);
+//		selection_sort(tablica, size);
 	end = GetTickCount(); 						// odczytaj liczbê milisekund po
 	cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
 	cout << "Otrzymano tablice - ";
@@ -148,12 +148,37 @@ int main()
 	cout << "	std::sort" << endl;
 	cout << "Sortuje... " << endl;
 	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-		sort(tablica, tablica + size);
+//		sort(tablica, tablica + size);
 	end = GetTickCount(); 						// odczytaj liczbê milisekund po
 	cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
 	cout << "Otrzymano tablice - ";
 		arrchk(tablica, size);
 	cout << endl << endl;
+
+	// Sort 9 - heap sort
+		copy(zbiorTestowy, zbiorTestowy + size, tablica);//zaladowanie zbioru testowego do tablicy roboczej
+		cout << "	heap" << endl;
+		cout << "Sortuje... " << endl;
+		start = GetTickCount(); 					// odczytaj liczbê milisekund przed
+			heap_sort(tablica, size);
+		end = GetTickCount(); 						// odczytaj liczbê milisekund po
+		cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
+		cout << "Otrzymano tablice - ";
+			arrchk(tablica, size);
+		cout << endl << endl;
+
+		// Sort 10 - shell
+			copy(zbiorTestowy, zbiorTestowy + size, tablica);//zaladowanie zbioru testowego do tablicy roboczej
+			cout << "	shell" << endl;
+			cout << "Sortuje... " << endl;
+			start = GetTickCount(); 					// odczytaj liczbê milisekund przed
+				shell_sort(tablica, size);
+			end = GetTickCount(); 						// odczytaj liczbê milisekund po
+			cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
+			cout << "Otrzymano tablice - ";
+				arrchk(tablica, size);
+			cout << endl << endl;
+
 
 	delete [] zbiorTestowy;
 	delete [] tablica;
