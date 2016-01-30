@@ -50,8 +50,8 @@ void hybrid_3way_sort(int a[], int lo, int hi, int CUTOFF)
 		}
 	}
 
-	quick_sort_3way(a, lo, lt - 1);
-	quick_sort_3way(a, gt + 1, hi);
+	hybrid_3way_sort(a, lo, lt - 1);
+	hybrid_3way_sort(a, gt + 1, hi);
 }
 
 // sort the whole array (translate arguments)
