@@ -130,7 +130,6 @@ void hybrid_sort(int a[], int size, int cutoff, int tryb)
 	hybrid_sort(a, 0, size -1, cutoff, tryb);
 }
 
-
 /*
 // test sorting
 int main(int argc, char* argv[])
