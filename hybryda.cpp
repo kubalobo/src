@@ -51,11 +51,6 @@ inline int middle_elem(int a[], int i, int j, int k)
 	}
 }
 
-inline int mediana(int a[], int size)
-{
-	return middle_elem(a, 0, size / 2, size - 1);
-}
-
 int mediana_losowe(int a[], int lo, int hi)
 {
 	int i = nextrand(lo, hi);
