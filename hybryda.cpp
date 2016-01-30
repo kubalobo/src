@@ -34,9 +34,6 @@ void mix(int a[], int size)  // mieszanie tablicy
 	}
 }
 
-
-
-
 inline int middle_elem(int a[], int i, int j, int k)
 {
 	if (a[i] <= a[j])
@@ -51,10 +48,6 @@ inline int middle_elem(int a[], int i, int j, int k)
 	}
 }
 
-int mediana(int a[], int size)
-{
-	return middle_elem(a, 0, size / 2, size - 1);
-}
 
 int mediana_losowe(int a[], int lo, int hi)
 {
@@ -110,10 +103,15 @@ void hybrid_sort(int a[], int lo, int hi, int CUTOFF, int tryb)
 	{}
 	else if(tryb == 1)
 	{
-		wybrano = mediana_losowe(a, lo, hi);
+		wybrano = middle_elem(a, lo, (hi+lo) / 2, hi);
 		exch(a, wybrano, lo);
 	}
 	else if(tryb == 2)
+		{
+			wybrano = mediana_losowe(a, lo, hi);
+			exch(a, wybrano, lo);
+		}
+	else if(tryb == 3)
 	{
 		wybrano = Tukey(a, lo, hi);
 		exch(a, wybrano, lo);
