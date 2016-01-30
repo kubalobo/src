@@ -11,7 +11,7 @@ using namespace std;
 
 int main()
 {
-	int size = 10000000;
+	int size = 100000000;
 
 	srand((int)time(NULL));
 
@@ -66,7 +66,11 @@ int main()
 		cout << "	hybrid_sort CUTOFF == " << i << endl;
 		cout << "Sortuje... " << endl;
 		start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-			hybrid_sort(tablica, size, i, 2);	// i -> CUTOFF - automat testuje po kolei ||||| ostatni parametr to tryb wyboru elem partycjonujacego 0(pierwszy), 1(mediana_losowe), 2(Tukey)
+
+			hybrid_sort(tablica, size, i, 1);	// i -> CUTOFF - automat testuje po kolei
+												//ostatni parametr to tryb wyboru elem partycjonujacego:
+												//0(pierwszy), 1(mediana), 2(mediana_losowe), 3(Tukey)
+
 		end = GetTickCount(); 						// odczytaj liczbê milisekund po
 		cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
 		cout << "Otrzymano tablice - ";
