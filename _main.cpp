@@ -53,18 +53,6 @@ int main()
 		cout << endl;
 */
 
-// Sort 10 - std::sort
-	copy(zbiorTestowy, zbiorTestowy + size, tablica);//zaladowanie zbioru testowego do tablicy roboczej
-	cout << "	std::sort" << endl;
-	cout << "Sortuje... " << endl;
-	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-		sort(tablica, tablica + size);
-	end = GetTickCount(); 						// odczytaj liczbê milisekund po
-	cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
-	cout << "Otrzymano tablice - ";
-		arrchk(tablica, size);
-	cout << endl << endl;
-
 // Sort 1 - bubble_sort
 	copy(zbiorTestowy, zbiorTestowy + size, tablica);//zaladowanie zbioru testowego do tablicy roboczej
 	cout << "	bubble_sort" << endl;
@@ -155,33 +143,17 @@ int main()
 		arrchk(tablica, size);
 	cout << endl << endl;
 
-
-// Sort 8 - hybrid_sort
+// Sort 8 - std::sort
 	copy(zbiorTestowy, zbiorTestowy + size, tablica);//zaladowanie zbioru testowego do tablicy roboczej
-	cout << "	hybrid_sort" << endl;
+	cout << "	std::sort" << endl;
 	cout << "Sortuje... " << endl;
 	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-		hybrid_sort(tablica, size, 10, 0);
+		sort(tablica, tablica + size);
 	end = GetTickCount(); 						// odczytaj liczbê milisekund po
 	cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
 	cout << "Otrzymano tablice - ";
 		arrchk(tablica, size);
 	cout << endl << endl;
-
-
-// Sort 9 - hybrid_3way_sort
-	copy(zbiorTestowy, zbiorTestowy + size, tablica);//zaladowanie zbioru testowego do tablicy roboczej
-	cout << "	hybrid_3way_sort" << endl;
-	cout << "Sortuje... " << endl;
-	start = GetTickCount(); 					// odczytaj liczbê milisekund przed
-		hybrid_3way_sort(tablica, size, 10);
-	end = GetTickCount(); 						// odczytaj liczbê milisekund po
-	cout << "Posortowano w: " << (end - start) * 0.001 << "s " << endl;
-	cout << "Otrzymano tablice - ";
-		arrchk(tablica, size);
-	cout << endl << endl;
-
-
 
 	delete [] zbiorTestowy;
 	delete [] tablica;
