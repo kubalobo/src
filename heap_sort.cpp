@@ -4,7 +4,7 @@
 *  Author: Krzysztof Soka³a
 *
 *************************************************************************/
-
+#include <iostream>
 inline void exch(int a[], int i, int j)
 {
 	int t = a[i];
@@ -15,8 +15,8 @@ inline void exch(int a[], int i, int j)
 void heap_control (int a[], int size, int i)
 {
 	int max;
-	int lo = 2*i;  
-	int ro = (2*i) + 1; 
+	int lo = (2*i)+1;  
+	int ro = (2*i) + 2; 
 	if ( (lo <= size) && (a[lo] > a[i]) )
 		max=lo;
 	else 
@@ -32,21 +32,19 @@ void heap_control (int a[], int size, int i)
 }
 
 void heap_create(int a[], int size)
-{
-	for (int i = size/2;  i > 0;  i--)
+{	
+	for (int i =size/2;  i >= 0;  i--)
 		heap_control(a,size, i);
 }
  
 void heap_sort(int a[], int size)
 {     
 	heap_create(a, size);
-	for (int i = size;  i > 1;  i--)
+	for (int i = size;  i > 0;  i--)
 	{
-		exch(a,i,1);
+		exch(a,i,0);
 		size--;
-		heap_control(a, size, 1);
+		heap_control(a, size, 0);
 	}
 }
  
-
-
